@@ -1,1 +1,1 @@
-# kubota_jedi_99problems
+https://aperiodic.net/pip/scala/s-99/
