@@ -79,5 +79,19 @@ def fun_11(x):
 
 import itertools
 input = ['a', 'b', 'c', 'c', 'd']
-print([i for i in input for _ in range(2)])
+# print([i for i in input for _ in range(2)])
 # print([x for x in range(2) for i in input])
+
+
+# P15
+input = ['a', 'b', 'c', 'd']
+def fun_15(x, n):
+    output = []
+    for i in x:
+        output += [i] * n
+    return output
+
+print(fun_15(input, 3))
+
+
+input = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
