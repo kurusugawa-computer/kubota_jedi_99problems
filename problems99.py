@@ -91,7 +91,64 @@ def fun_15(x, n):
         output += [i] * n
     return output
 
-print(fun_15(input, 3))
-
+# print(fun_15(input, 3))
 
 input = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+
+
+# P18
+def fun_18(start, end, x):
+    return x[start:end]
+
+# print(fun_18(3, 7, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']))
+
+def fun_19(i, x):
+    return x[i:] + x[:i]
+
+# print(fun_19(3, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']))
+# print(fun_19(-2, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']))
+
+
+def fun_20(i, x):
+    x_copy = x.copy()
+    r = x_copy.pop(i)
+    return(x_copy, r)
+
+print(fun_20(1, ["a", "b", "c", "d"]))
+
+
+def fun_21(insert_str, insert_idx, x):
+    x_copy = x.copy()
+    x_copy.insert(insert_idx, insert_str)
+    return x_copy
+
+print(fun_21('new', 1, ['a', 'b', 'c', 'd']))
+
+
+# P22
+print(list(range(4,9+1)))
+
+
+# P23
+import random
+print(random.sample(['a', 'b', 'c', 'd', 'f', 'g', 'h'], 3))
+
+# P24
+# print([random.randint(1, 49) for _ in range(6)])  # これだと重複することがある
+print(random.sample(list(range(1, 50)), 6))
+
+# P25
+input = ["a", "b", "c", "d", "e", "f"]
+def fun_25(x):
+    x_copy = x.copy()
+    random.shuffle(x_copy)
+    return x_copy
+
+print(fun_25(input))
+
+# P26
+import itertools
+
+input = ["a", "b", "c", "d", "e", "f"]
+comb = list(itertools.combinations(input, 3))
+print(comb, len(comb))
