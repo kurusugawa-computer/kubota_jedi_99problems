@@ -108,25 +108,22 @@ def fun_19(i, x):
 # print(fun_19(3, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']))
 # print(fun_19(-2, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']))
 
-
 def fun_20(i, x):
     x_copy = x.copy()
     r = x_copy.pop(i)
     return(x_copy, r)
 
-print(fun_20(1, ["a", "b", "c", "d"]))
-
+# print(fun_20(1, ["a", "b", "c", "d"]))
 
 def fun_21(insert_str, insert_idx, x):
     x_copy = x.copy()
     x_copy.insert(insert_idx, insert_str)
     return x_copy
 
-print(fun_21('new', 1, ['a', 'b', 'c', 'd']))
-
+# print(fun_21('new', 1, ['a', 'b', 'c', 'd']))
 
 # P22
-print(list(range(4,9+1)))
+# print(list(range(4,9+1)))
 
 
 # P23
@@ -136,6 +133,7 @@ print(random.sample(['a', 'b', 'c', 'd', 'f', 'g', 'h'], 3))
 # P24
 # print([random.randint(1, 49) for _ in range(6)])  # これだと重複することがある
 print(random.sample(list(range(1, 50)), 6))
+
 
 # P25
 input = ["a", "b", "c", "d", "e", "f"]
@@ -152,3 +150,68 @@ import itertools
 input = ["a", "b", "c", "d", "e", "f"]
 comb = list(itertools.combinations(input, 3))
 print(comb, len(comb))
+
+
+# P27
+def fun_27(group_num, human_list):
+    group_indices = []
+    for i, j in enumerate(group_num):
+        group_indices += [i for _ in range(j)]
+    group_list = []
+    for indices in set(itertools.permutations(group_indices)):
+        d = {i: [] for i in range(len(group_num))}
+        for j, h in zip(indices, human_list):
+            d[j].append(h)
+        group_list.append(list(d.values()))
+    return group_list
+
+human_list = ["Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida"]
+print(fun_27([2,3,4], human_list))
+# print()
+# print(len(fun_27([2,2,5], human_list)))
+
+
+# P31
+def fun_31(x):
+    if x == 1:
+        return False
+    return sum([x % i == 0 for i in range(2, x+1)]) == 0
+
+print(fun_31(7))
+
+# P32
+# -----------------------------------------------------------------------
+# ユークリッド互助法を使わずに思いつきで書いたやつ
+def prime_factorization_v1(x):
+    # もっと早いアルゴリズムありそう。
+    # そもそも標準機能として用意されているはず
+    return [i for i in range(1, x + 1) if x % i == 0]
+
+
+def prime_factorization_v2(x):
+    # x/2より大きい約数は無いはず
+    return [i for i in range(1, x // 2 + 1) if x % i == 0]
+
+def prime_factorization_v2(x):
+    # x/2より大きい約数は無いはず
+    return [i for i in range(1, x // 2 + 1) if x % i == 0]
+
+import sympy
+def prime_factorization_v3(x):
+    # sympyモジュールを使えば良いらしい
+    # https://ictsr4.com/py/m0120.html
+    return sympy.divisors(x)
+
+def fun_32_v0(x1, x2):
+    x1_set = set(prime_factorization_v3(x1))
+    x2_set = set(prime_factorization_v3(x2))
+    return max(list(x1_set & x2_set))
+# print(prime_factorization_v1(10))
+print(fun_32_v0(36, 63))
+# -----------------------------------------------------------------------
+
+# -----------------------------------------------------------------------
+# ユークリッド互助法
+def fun_32(x1, x2):
+    pass
+# -----------------------------------------------------------------------
